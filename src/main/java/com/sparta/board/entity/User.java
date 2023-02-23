@@ -1,15 +1,16 @@
-package com.sparta.hanghaememo.entity;
+package com.sparta.board.entity;
 
-import com.sparta.hanghaememo.dto.request.SignupRequestDto;
+import com.sparta.board.dto.SignupRequestDto;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "users")
 public class User {
 
@@ -17,9 +18,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // nullable: null 허용 여부
-    // unique: 중복 허용 여부 (false 일때 중복 허용)
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
@@ -29,15 +28,13 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;
 
-
+    @Builder
     public User(SignupRequestDto requestDto) {
         this.username = requestDto.getUsername();
         this.password = requestDto.getPassword();
-        if (requestDto.isAdmin()) {
-            this.role = UserRoleEnum.ADMIN;
-        } else {  // admin = false 로 입력했을 경우
-            this.role = UserRoleEnum.USER;
-        }
+
+        // admin = true 로 입력했을 경우
+        this.role = requestDto.getAdmin() ? UserRoleEnum.ADMIN : UserRoleEnum.USER;
     }
 
 }

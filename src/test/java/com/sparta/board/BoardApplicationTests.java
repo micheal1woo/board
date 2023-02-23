@@ -1,10 +1,10 @@
-package com.sparta.hanghaememo;
+package com.sparta.board;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HanghaememoApplicationTests {
+class BoardApplicationTests {
 
     @Test
     void contextLoads() {

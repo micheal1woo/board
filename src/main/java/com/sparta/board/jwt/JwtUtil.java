@@ -1,7 +1,6 @@
-package com.sparta.hanghaememo.jwt;
+package com.sparta.board.jwt;
 
-
-import com.sparta.hanghaememo.entity.UserRoleEnum;
+import com.sparta.board.entity.UserRoleEnum;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SecurityException;

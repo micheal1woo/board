@@ -1,4 +1,4 @@
-package com.sparta.hanghaememo.entity;
+package com.sparta.board.entity;
 
 public enum UserRoleEnum {
 
